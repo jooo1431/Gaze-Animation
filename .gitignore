@@ -1,0 +1,12 @@
+# Ignore generated files
+example.m
+*.pb
+*.pyc
+gaze_data_sample/
+Samples/
+output_test/
+
+test.py
+visualize.py
+imageGen.py
+.DS_Store
