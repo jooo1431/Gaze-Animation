@@ -51,7 +51,20 @@ blenderproc debug render.py
 - Camera Setting
     - Options: ["camera_position", "camera_target", "image_size", "focal_length", "camera_up", "focus_distance", "fstop", "camera_up"]
 
-
-
-
+## Sidenotes
+- To modify and test the 3D scene, make changes in 'eyemodel/blender_script.py.template'  
+- Issues during Blender installaion, Provided APIs, Further settings can be resolved in 'eyemodel/__init__.py'
+- For the project left-eye is only deployed, thus all adjustments are only made for the left-eye
+- Current setting for the left-eye rotation is set to Euler Rotation in 'YZX'(Pitch-Roll-Yaw)
+``` 
+eul.rotate_axis('Y', math.radians(input_eye_target[0])) # horizontal(Pitch)
+eul.rotate_axis('X', math.radians(90 + input_eye_target[1])) # vertical(Yaw)
+```
+- Setting the origin of the object is necessary for proper rotation 
+```
+# Change origin of the left eye
+bpy.context.view_layer.objects.active = bpy.data.objects["eye.L"]
+bpy.data.objects["eye.L"].select_set(True)
+bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_VOLUME')
+```
 
